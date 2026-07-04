@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唐萌 — 个人简历</title>
+    <style>
+        :root {
+            --apple-black: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+            background-color: var(--apple-white);
+            color: var(--apple-black);
+            line-height: 1.47059;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 0 80px;
+            border-bottom: 1px solid var(--apple-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(0,113,227,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-name {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--apple-black) 0%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-tagline {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--apple-gray);
+            letter-spacing: 0.011em;
+            margin-bottom: 32px;
+        }
+        .hero-contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+            font-size: 15px;
+            color: var(--apple-gray);
+            letter-spacing: 0.016em;
+        }
+        .hero-contact a {
+            color: var(--apple-blue);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+        .hero-contact a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 1px;
+            background: var(--apple-blue);
+            transition: width 0.3s ease;
+        }
+        .hero-contact a:hover { opacity: 0.8; }
+        .hero-contact a:hover::after { width: 100%; }
+        .hero-contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-contact svg {
+            width: 14px; height: 14px;
+            opacity: 0.6;
+        }
+
+        /* Section */
+        .section {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--apple-border);
+            position: relative;
+        }
+        .section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 100px;
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.021em;
+            color: var(--apple-black);
+        }
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--apple-gray);
+            font-weight: 400;
+        }
+
+        /* Education */
+        .edu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .edu-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 16px 20px;
+            background: var(--apple-light-gray);
+            border-radius: 14px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .edu-item::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: linear-gradient(180deg, var(--apple-blue) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .edu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+        .edu-item:hover::before { opacity: 1; }
+        .edu-left { flex: 0 0 130px; min-width: 130px; }
+        .edu-date {
+            font-size: 13px;
+            color: var(--apple-gray);
+            font-weight: 400;
+            letter-spacing: 0.016em;
+            line-height: 1.4;
+        }
+        .edu-right { flex: 1; min-width: 0; }
+        .edu-degree {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--apple-black);
+            letter-spacing: -0.021em;
+            margin-bottom: 2px;
+        }
+        .edu-school {
+            font-size: 14px;
+            color: var(--apple-gray);
+            margin-bottom: 4px;
+        }
+        .edu-detail {
+            font-size: 13px;
+            color: var(--apple-gray);
+            line-height: 1.5;
+        }
+        .edu-detail strong {
+            color: var(--apple-black);
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .edu-item { flex-direction: column; gap: 6px; }
+            .edu-left { flex: none; }
+        }
+
+        /* Work */
+        .work-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .work-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px 24px;
+            background: var(--apple-light-gray);
+            border-radius: 16px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .work-item::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: linear-gradient(180deg, var(--apple-blue) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .work-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+        .work-item:hover::before { opacity: 1; }
+        .work-left { flex: 0 0 140px; min-width: 140px; }
+        .work-date {
+            font-size: 13px;
+            color: var(--apple-gray);
+            font-weight: 400;
+            letter-spacing: 0.016em;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+        .work-role {
+            font-size: 13px;
+            color: var(--apple-blue);
+            font-weight: 500;
+            letter-spacing: -0.016em;
+        }
+        .work-right { flex: 1; min-width: 0; }
+        .work-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--apple-black);
+            letter-spacing: -0.021em;
+            margin-bottom: 6px;
+        }
+        .work-desc {
+            font-size: 14px;
+            color: var(--apple-gray);
+            line-height: 1.5;
+            letter-spacing: -0.016em;
+        }
+        .work-desc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 0;
+        }
+        .work-desc li {
+            padding: 2px 0 2px 14px;
+            position: relative;
+            width: 100%;
+        }
+        .work-desc li::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 10px;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--apple-blue);
+            opacity: 0.35;
+        }
+        @media (max-width: 640px) {
+            .work-item { flex-direction: column; gap: 8px; }
+            .work-left { flex: none; display: flex; align-items: baseline; gap: 12px; }
+            .work-date { margin-bottom: 0; }
+        }
+
+        /* Portfolio Category */
+        .portfolio-category { margin-bottom: 48px; }
+        .portfolio-category:last-child { margin-bottom: 0; }
+        .category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--apple-black);
+            margin-bottom: 20px;
+            padding-left: 12px;
+            border-left: 3px solid var(--apple-blue);
+            letter-spacing: -0.021em;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .portfolio-card {
+            padding: 0;
+            background: var(--apple-light-gray);
+            border-radius: 16px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            overflow: hidden;
+            position: relative;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+            border-color: var(--apple-border);
+            background: var(--apple-white);
+        }
+
+        /* Card Media */
+        .card-media {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #e3e3e8 0%, #d2d2d7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-media::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .portfolio-card:hover .card-media::before { opacity: 1; }
+
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+            position: relative;
+        }
+        .play-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--apple-blue);
+            margin-left: 2px;
+        }
+        .portfolio-card:hover .play-btn {
+            transform: scale(1.1);
+            background: var(--apple-blue);
+        }
+        .portfolio-card:hover .play-btn svg { fill: white; }
+
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            background: rgba(0,113,227,0.9);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 100px;
+            letter-spacing: 0.02em;
+            z-index: 2;
+        }
+
+        /* Card Content */
+        .portfolio-card-meta {
+            font-size: 12px;
+            color: var(--apple-blue);
+            font-weight: 600;
+            margin: 16px 16px 6px;
+            letter-spacing: 0.04em;
+            line-height: 1.3;
+        }
+        .portfolio-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--apple-black);
+            margin: 0 16px 8px;
+            letter-spacing: -0.021em;
+            line-height: 1.3;
+        }
+        .portfolio-card-desc {
+            font-size: 13px;
+            color: var(--apple-gray);
+            line-height: 1.5;
+            margin: 0 16px 16px;
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        }
+        @media (max-width: 480px) {
+            .portfolio-grid { grid-template-columns: 1fr; gap: 12px; }
+            .card-media { height: 180px; }
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .video-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 960px;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .video-modal.active .video-modal-content {
+            transform: scale(1);
+        }
+        .video-player-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+        .video-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0; left: 0;
+        }
+
+        /* Multi-video selector */
+        .video-selector {
+            background: #1a1a1a;
+            padding: 16px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .video-selector-label {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            margin-right: 6px;
+            font-weight: 500;
+        }
+        .video-selector-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .video-selector-btn:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+        }
+        .video-selector-btn.active {
+            background: var(--apple-blue);
+            border-color: var(--apple-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            z-index: 10;
+        }
+        .video-modal-close:hover { background: rgba(255,255,255,0.3); }
+        .video-modal-hint {
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            padding: 10px 20px;
+            background: var(--apple-light-gray);
+            border: 1px solid var(--apple-border);
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--apple-black);
+            font-weight: 500;
+            letter-spacing: -0.016em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+        }
+        .skill-tag:hover {
+            background: var(--apple-white);
+            border-color: var(--apple-blue);
+            color: var(--apple-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,113,227,0.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 12px;
+            color: var(--apple-gray);
+            letter-spacing: 0.016em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .hero { padding: 60px 0 48px; }
+            .hero-name { font-size: 40px; }
+            .hero-tagline { font-size: 18px; }
+            .section { padding: 48px 0; }
+            .section-title { font-size: 24px; }
+            .video-modal-content { width: 95%; border-radius: 12px; }
+            .video-modal-close { top: -44px; right: 0; width: 36px; height: 36px; }
+            .video-selector { padding: 12px 14px; }
+            .video-selector-btn { padding: 6px 12px; font-size: 12px; }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <header class="hero">
+            <h1 class="hero-name">唐萌</h1>
+            <p class="hero-tagline">AI 内容策划 · 影视剪辑 · 戏剧与影视</p>
+            <div class="hero-contact">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    198 0838 1900
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <a href="mailto:1538461079@qq.com">1538461079@qq.com</a>
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    四川省广汉市
+                </span>
+            </div>
+        </header>
+
+        <!-- Education -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">教育背景</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-item">
+                    <div class="edu-left">
+                        <div class="edu-date">2025.09 – 2027.06</div>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-degree">艺术学硕士 · 戏剧与影视</div>
+                        <div class="edu-school">成都大学</div>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-left">
+                        <div class="edu-date">2019.09 – 2024.06</div>
+                    </div>
+                    <div class="edu-right">
+                        <div class="edu-degree">广播电视学 · 本科</div>
+                        <div class="edu-school">四川轻化工大学</div>
+                        <div class="edu-detail">
+                            <strong>主修课程：</strong>新闻学概论、影视剧本创作、影视艺术理论、纪录片创作、新媒体概论<br>
+                            <strong>毕业设计：</strong>《小小少年》—— 事实无人抚养儿童纪录片
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">工作经历</h2>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-left">
+                        <div class="work-date">2026.03 – 2026.07</div>
+                        <div class="work-role">AI 内容策划</div>
+                    </div>
+                    <div class="work-right">
+                        <div class="work-title">成都易辉文化传播有限责任公司</div>
+                        <div class="work-desc">
+                            <ul>
+                                <li>AI 驱动内容创意策划与全流程执行，结合生成式 AI 进行视觉概念设计与文案创作</li>
+                                <li>运用 Tapnow、LibTV、可灵 3.0 Omni 辅助视觉策划，提升内容生产效率与创意表现</li>
+                                <li>探索 AI 技术与传统影视融合路径，建立高效内容生产工作流</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-left">
+                        <div class="work-date">2023.06 – 2024.01</div>
+                        <div class="work-role">剪辑 / 策划</div>
+                    </div>
+                    <div class="work-right">
+                        <div class="work-title">光知文化传媒有限公司</div>
+                        <div class="work-desc">
+                            <ul>
+                                <li>政府单位宣传片、微电影、纪录片策划与后期剪辑，独立完成全流程制作</li>
+                                <li>音乐节、新能源大会、政府会议等大型活动现场快剪与直播技术支持</li>
+                                <li>建立标准化剪辑模板与素材库，提升团队后期制作效率约 30%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-left">
+                        <div class="work-date">2024.01 – 2024.06</div>
+                        <div class="work-role">剪辑 / 策划</div>
+                    </div>
+                    <div class="work-right">
+                        <div class="work-title">个人博主合作</div>
+                        <div class="work-desc">
+                            <ul>
+                                <li>统筹抖音、小红书、快手多平台内容运营与视觉策划，制定差异化内容策略</li>
+                                <li>为第三方品牌定制推广方案，粉丝增长 6,000+，视频总播放量突破 2,000 万</li>
+                                <li>独立制作千万级播放量爆款视频，建立数据复盘机制优化内容选题</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目作品 / Portfolio -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">项目作品</h2>
+                <span class="section-subtitle">点击卡片查看视频</span>
+            </div>
+
+            <!-- 分类：文旅类 -->
+            <div class="portfolio-category">
+                <h3 class="category-title">文旅宣传</h3>
+                <div class="portfolio-grid">
+                    <!-- 
+                        ═══════════════════════════════════════════════════════
+                        【林芝文旅】包含 3 个视频
+                        使用说明：
+                        1. 将视频上传到B站，获取3个BV号
+                        2. 将下方 data-videos 中的占位符替换为真实BV号
+                        3. 将 data-labels 中的标题替换为真实视频标题
+                        ═══════════════════════════════════════════════════════
+                    -->
+                    <div class="portfolio-card" 
+                         data-videos="BV1SfMF63EDr,BV1SfMF63EWW,BV1gfMF6GEK8"
+                         data-labels="林芝文旅1,林芝文旅2,林芝文旅3"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">3 个视频</span>
+                        </div>
+                        <div class="portfolio-card-meta">林芝文旅</div>
+                        <div class="portfolio-card-title">林芝系列宣传片</div>
+                        <div class="portfolio-card-desc">负责策划与剪辑，展现自然风光与地域文化魅力。</div>
+                    </div>
+
+                    <!-- 
+                        ═══════════════════════════════════════════════════════
+                        【洛阳文旅】包含 3 个视频
+                        ═══════════════════════════════════════════════════════
+                    -->
+                    <div class="portfolio-card" 
+                         data-videos="BV1SfMF63EQF,BV1gfMF6GEeT,BV1DfMF63Et7"
+                         data-labels="洛阳文旅1,洛阳文旅2,洛阳文旅3"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">3 个视频</span>
+                        </div>
+                        <div class="portfolio-card-meta">洛阳文旅</div>
+                        <div class="portfolio-card-title">文旅网红合作项目</div>
+                        <div class="portfolio-card-desc">负责策划与剪辑，通过网红效应宣传洛阳旅游。</div>
+                    </div>
+
+                    <!-- 西藏文旅：1个视频 -->
+                    <div class="portfolio-card" 
+                         data-videos="BV1UFMc66EQP"
+                         data-labels="西藏文旅-心约西藏片段"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">AI 视频</span>
+                        </div>
+                        <div class="portfolio-card-meta">西藏文旅</div>
+                        <div class="portfolio-card-title">文旅合作项目</div>
+                        <div class="portfolio-card-desc">负责 AI 内容策划与制作，结合生成式 AI 进行视觉概念设计。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分类：企业商业类 -->
+            <div class="portfolio-category">
+                <h3 class="category-title">企业 & 商业</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card" 
+                         data-videos="BV1uFMc6rEJ5"
+                         data-labels="北京海开控股企业MV"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">MV</span>
+                        </div>
+                        <div class="portfolio-card-meta">北京海开控股</div>
+                        <div class="portfolio-card-title">企业宣传 MV</div>
+                        <div class="portfolio-card-desc">负责剪辑与包装，展现企业风采与文化。</div>
+                    </div>
+
+                    <div class="portfolio-card" 
+                         data-videos="BV1gfMF6GEek"
+                         data-labels="红果短剧剪辑"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">短剧</span>
+                        </div>
+                        <div class="portfolio-card-meta">鸿声影视</div>
+                        <div class="portfolio-card-title">红果短剧剪辑</div>
+                        <div class="portfolio-card-desc">为短剧《沈先生，契约到期请放手》制作预热宣传视频。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分类：政府 & 公益类 -->
+            <div class="portfolio-category">
+                <h3 class="category-title">政府 & 公益</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card" 
+                         data-videos="BV1SFMc66Ero"
+                         data-labels="成都高新区知识产权服务联盟"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">预告</span>
+                        </div>
+                        <div class="portfolio-card-meta">成都高新区知识产权服务联盟</div>
+                        <div class="portfolio-card-title">活动预告</div>
+                        <div class="portfolio-card-desc">负责策划与剪辑，为政府活动制作预热宣传视频。</div>
+                    </div>
+
+                    <div class="portfolio-card" 
+                         data-videos="BV1SfMF63Eqa"
+                         data-labels="金橙子电影节宣传片"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">宣传片</span>
+                        </div>
+                        <div class="portfolio-card-meta">金橙子电影节</div>
+                        <div class="portfolio-card-title">微电影大赛宣传片</div>
+                        <div class="portfolio-card-desc">负责剪辑与包装，展现东盟学院专业风采，为大赛预热。</div>
+                    </div>
+
+                    <div class="portfolio-card" 
+                         data-videos="BV1UFMc66Edt"
+                         data-labels="壹基金项目宣传片"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">公益</span>
+                        </div>
+                        <div class="portfolio-card-meta">壹基金</div>
+                        <div class="portfolio-card-title">项目宣传片</div>
+                        <div class="portfolio-card-desc">负责导演与剪辑，乡村音乐教室公益广告，节奏轻松童趣。</div>
+                    </div>
+
+                    <div class="portfolio-card" 
+                         data-videos="BV1uFMc6rEeu"
+                         data-labels="四川税务系列科普视频"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">科普</span>
+                        </div>
+                        <div class="portfolio-card-meta">四川税务</div>
+                        <div class="portfolio-card-title">知识科普</div>
+                        <div class="portfolio-card-desc">负责剪辑与包装，科普税务知识。</div>
+                    </div>
+
+                    <div class="portfolio-card" 
+                         data-videos="BV1SFMc66EWA"
+                         data-labels="自贡消防形象片《追光》"
+                         onclick="openVideo(this)">
+                        <div class="card-media">
+                            <div class="play-btn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="card-badge">形象片</span>
+                        </div>
+                        <div class="portfolio-card-meta">自贡消防</div>
+                        <div class="portfolio-card-title">形象宣传片《追光》</div>
+                        <div class="portfolio-card-desc">负责剪辑与包装，展现消防员铁的意志和坚韧不拔的精神。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">专业技能</h2>
+            </div>
+            <div class="skills-container">
+                <span class="skill-tag">Final Cut Pro</span>
+                <span class="skill-tag">Premiere</span>
+                <span class="skill-tag">剪映</span>
+                <span class="skill-tag">After Effects</span>
+                <span class="skill-tag">AI 内容生成</span>
+                <span class="skill-tag">影视策划</span>
+                <span class="skill-tag">纪录片创作</span>
+                <span class="skill-tag">剧本创作</span>
+                <span class="skill-tag">新媒体运营</span>
+                <span class="skill-tag">CET-6</span>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>唐萌 · 戏剧与影视 · AI 内容策划</p>
+        </footer>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal" onclick="closeVideo(event)">
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <button class="video-modal-close" onclick="closeVideo()">✕</button>
+            <div class="video-player-wrap">
+                <iframe id="videoFrame" src="" allowfullscreen></iframe>
+            </div>
+            <div class="video-selector" id="videoSelector">
+                <!-- 动态插入视频选择按钮 -->
+            </div>
+            <div class="video-modal-hint">点击空白处或按 ESC 键关闭</div>
+        </div>
+    </div>
+
+    <script>
+        // 当前播放的视频索引
+        let currentVideoIndex = 0;
+        let currentVideos = [];
+        let currentLabels = [];
+
+        // 打开视频弹窗
+        function openVideo(element) {
+            const videosAttr = element.getAttribute('data-videos');
+            const labelsAttr = element.getAttribute('data-labels');
+
+            if (!videosAttr) return;
+
+            currentVideos = videosAttr.split(',');
+            currentLabels = labelsAttr ? labelsAttr.split(',') : currentVideos.map((_, i) => '视频 ' + (i + 1));
+            currentVideoIndex = 0;
+
+            // 检查是否还是占位符
+            if (currentVideos[0].startsWith('BV1xx')) {
+                alert('请先将 data-videos 替换为你的真实B站视频BV号\n\n获取方式：\n1. 将视频上传到B站\n2. 打开视频页面，复制链接中的BV号（如 BV1AB2CDEFGH）\n3. 替换HTML中对应项目的 data-videos 属性');
+                return;
+            }
+
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoFrame');
+            const selector = document.getElementById('videoSelector');
+
+            // 生成视频选择按钮
+            selector.innerHTML = '<span class="video-selector-label">选择视频：</span>';
+            currentVideos.forEach((bvid, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-selector-btn' + (index === 0 ? ' active' : '');
+                btn.textContent = currentLabels[index] || ('视频 ' + (index + 1));
+                btn.onclick = function() { switchVideo(index); };
+                selector.appendChild(btn);
+            });
+
+            // 播放第一个视频
+            iframe.src = 'https://player.bilibili.com/player.html?bvid=' + currentVideos[0] + '&autoplay=1&high_quality=1';
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 切换视频
+        function switchVideo(index) {
+            if (index === currentVideoIndex) return;
+
+            currentVideoIndex = index;
+            const iframe = document.getElementById('videoFrame');
+            iframe.src = 'https://player.bilibili.com/player.html?bvid=' + currentVideos[index] + '&autoplay=1&high_quality=1';
+
+            // 更新按钮状态
+            const buttons = document.querySelectorAll('.video-selector-btn');
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+        }
+
+        // 关闭视频弹窗
+        function closeVideo(event) {
+            if (event && event.target !== event.currentTarget) {
+                return;
+            }
+
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoFrame');
+
+            modal.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = '';
+            currentVideos = [];
+            currentLabels = [];
+            currentVideoIndex = 0;
+        }
+
+        // ESC键关闭
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeVideo();
+            }
+        });
+    </script>
+</body>
+</html>
